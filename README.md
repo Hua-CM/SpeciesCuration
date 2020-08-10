@@ -21,10 +21,10 @@ Taxonomy作为最常用的数据库，批量查询是一个最基本的需求。
 **离线数据：** http://www.catalogueoflife.org/content/annual-checklist-archive  
 **软件：** http://col.especies.cn/download
 
-####中国物种名录2000
+#### 中国物种名录2000
 都是中文的，自己去看吧
 
-[query_species2000_2.py](query_species2000_2.py)可以使用下载到本地的数据库文件批量查询物种正名。所依赖的数据库文件是上述[离线数据](http://www.catalogueoflife.org/content/annual-checklist-archive)下载的Annual Checklist as Darwin Core Archive解压后的taxa.txt
+[query_species2000_2.py](query_species2000_2.py)可以使用下载到本地的数据库文件批量查询物种正名。所依赖的数据库文件是上述[离线数据](http://www.catalogueoflife.org/content/annual-checklist-archive)下载的Annual Checklist as Darwin Core Archive解压后的taxa.txt  
 *ps:* 该文件比较大，内存小于16G不建议使用该脚本，速度也有点感人，查询几千个的话可能需要几十分钟。species2000有个在线的[批量查询功能](http://www.catalogueoflife.org/listmatching/) 但是我估计结果取回速度会更感人，而且结果应该还是要自己解析。  
 
 [query_species2000.py](query_species2000.py)是上述脚本的MySQL版本，优点是对内存要求小（毕竟用的数据库），缺点是速度慢，一个query经实验大概需要5~10s（数据库文件存储于SATA SSD）。适合小批量查询（但是话又说回来了，小批量为什么不直接用API呢？回头可能会写个API的脚本）
