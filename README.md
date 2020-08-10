@@ -4,7 +4,7 @@ NCBI的taxonomy数据库是目前最常用的物种分类数据库，大多数�
 
 ## 有关资源
 ### taxonkit和taxonomy数据库
-Taxonomy作为最常用的数据库，批量查询是一个最基本的需求。这里推荐爪哥的[taxonkit](https://github.com/shenwei356/taxonkit), GO写的，速度很快。而且好用。taxonkit依赖taxonomy数据库的taxdump文件([下载地址](ftp://ftp.ncbi.nih.gov/pub/taxonomy/)
+Taxonomy作为最常用的数据库，批量查询是一个最基本的需求。这里推荐爪哥的[taxonkit](https://github.com/shenwei356/taxonkit), GO写的，速度很快。而且好用。taxonkit依赖taxonomy数据库的taxdump文件[下载地址](ftp://ftp.ncbi.nih.gov/pub/taxonomy/)
 
 ### 多识百科
 多识百科是一个中文的、非官方的植物分类网站。目前整合了APG IV和一些其他的信息。优点是在属及属以上的层次已经囊括了最新的主流分类系统，尤其是对一些有争议的地方有相关说明，而且是中文的，用起来方便。缺点是没有精确到种的信息。建议使用多识校正科、属异名。使用[spider_duoshi.py](spider_duoshi.py)可以爬取相关的科、属信息。
