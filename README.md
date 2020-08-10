@@ -20,7 +20,6 @@ Taxonomy作为最常用的数据库，批量查询是一个最基本的需求。
 **API：** http://www.catalogueoflife.org/content/web-services  
 **离线数据：** http://www.catalogueoflife.org/content/annual-checklist-archive  
 **软件：** http://col.especies.cn/download
-
 #### 中国物种名录2000
 都是中文的，自己去看吧
 
