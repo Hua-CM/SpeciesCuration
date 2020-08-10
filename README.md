@@ -16,7 +16,7 @@ Taxonomy作为最常用的数据库，批量查询是一个最基本的需求。
 ### species2000
 [物种2000](www.catalogueoflife.org)是一个在英国注册的非营利组织，由52个全球性的生物多样性数据库组织以联邦的形式联合而成。优点是每年都会更新数据，而且有[中国节点](http://col.especies.cn/)，并且提供的查询方法十分多样，包括在线网页查询、API查询、离线数据库查询。中国物种名录2000甚至有离线软件（嗯，他们自己写了个软件。。。。）**需要注意的是中国物种名录2000和species2000里面的数据不完全一样，他们又有各自的离线数据库、API**。
 
-#### species2000  
+#### 国际版species2000  
 **API：** http://www.catalogueoflife.org/content/web-services  
 **离线数据：** http://www.catalogueoflife.org/content/annual-checklist-archive  
 **软件：** http://col.especies.cn/download
