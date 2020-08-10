@@ -10,8 +10,6 @@ import requests
 import pandas as pd
 import json
 
-user_key1 = '601dd1be23224b4c879d948b9601c63a'
-
 
 def query_name(latin_name, user_key):
     print(latin_name)
