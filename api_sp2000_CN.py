@@ -69,9 +69,9 @@ if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser(description="This is the script for querying accepted  name from species2000 china"
                                                  "using API")
-    parser.add_argument('-i', '--iutput', required=True,
+    parser.add_argument('-i', '--input', required=True,
                         help='<file_path> input path. One species name per line')
-    parser.add_argument('-i', '--output', required=True,
+    parser.add_argument('-o', '--output', required=True,
                         help='<file_path> output path')
     parser.add_argument('-k', '--key', required=True,
                         help='<char> user key for API service')
