@@ -1,5 +1,5 @@
 # SpeciesCuration
-**更新日期：2020-08-08**  
+**更新日期：2020-08-30**  
 NCBI的taxonomy数据库是目前最常用的物种分类数据库，大多数情况下足够使用。但是当涉及到进化等对分类有着较高要求的时候，taxonomy数据库就力有不殆了，故记录下目前常用的一些资源。
 
 ## 有关资源
@@ -26,7 +26,8 @@ Taxonomy作为最常用的数据库，批量查询是一个最基本的需求。
 [query_species2000_2.py](query_species2000_2.py)可以使用下载到本地的数据库文件批量查询物种正名。所依赖的数据库文件是上述[离线数据](http://www.catalogueoflife.org/content/annual-checklist-archive)下载的Annual Checklist as Darwin Core Archive解压后的taxa.txt  
 *ps:* 该文件比较大，内存小于16G不建议使用该脚本，速度也有点感人，查询几千个的话可能需要几十分钟。species2000有个在线的[批量查询功能](http://www.catalogueoflife.org/listmatching/) 但是我估计结果取回速度会更感人，而且结果应该还是要自己解析。  
 
-[query_species2000.py](query_species2000.py)是上述脚本的MySQL版本，优点是对内存要求小（毕竟用的数据库），缺点是速度慢，一个query经实验大概需要5~10s（数据库文件存储于SATA SSD）。适合小批量查询（但是话又说回来了，小批量为什么不直接用API呢？回头可能会写个API的脚本）
+[query_species2000.py](query_species2000.py)是上述脚本的MySQL版本，优点是对内存要求小（毕竟用的数据库），缺点是速度慢，一个query经实验大概需要5~10s（数据库文件存储于SATA 
+SSD）。适合小批量查询（但是话又说回来了，小批量为什么不直接用API呢？Species2000最近正在升级API系统，预计2020下半年完成，等他们完成后写一个API的脚本）
 
 [api_sp2000_CN.py](api_sp2000_CN.py)可以使用中国物种名录2000的API进行查询（需注册账号），一天有2000个查询额度（实际上好像目前没有限制，估计是用的人不多）
 
