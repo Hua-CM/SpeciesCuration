@@ -1,5 +1,5 @@
 # SpeciesCuration
-**更新日期：2020-08-30**  
+**更新日期：2022-01-03**  
 NCBI的taxonomy数据库是目前最常用的物种分类数据库，大多数情况下足够使用。但是当涉及到进化等对分类有着较高要求的时候，taxonomy数据库就力有不殆了，故记录下目前常用的一些资源。
 
 ## 有关资源
@@ -18,22 +18,24 @@ Taxonomy作为最常用的数据库，批量查询是一个最基本的需求。
 
 #### 国际版species2000  
 **API：** http://www.catalogueoflife.org/content/web-services  
-**离线数据：** http://www.catalogueoflife.org/content/annual-checklist-archive  
+**离线数据：** https://www.catalogueoflife.org/data/download
 **软件：** http://col.especies.cn/download
 #### 中国物种名录2000
 都是中文的，自己去看吧
 
-[query_species2000_2.py](query_species2000_2.py)可以使用下载到本地的数据库文件批量查询物种正名。所依赖的数据库文件是上述[离线数据](http://www.catalogueoflife.org/content/annual-checklist-archive)下载的Annual Checklist as Darwin Core Archive解压后的taxa.txt  
+[query_species2000_2.py](query_species2000_2.py)可以使用下载到本地的数据库文件批量查询物种正名。所依赖的数据库文件是上述[离线数据](https://www.catalogueoflife.org/data/download) 下载的Annual Checklist as Darwin Core Archive解压后的taxa.txt  
 *ps:* 该文件比较大，内存小于16G不建议使用该脚本，速度也有点感人，查询几千个的话可能需要几十分钟。species2000有个在线的[批量查询功能](http://www.catalogueoflife.org/listmatching/) 但是我估计结果取回速度会更感人，而且结果应该还是要自己解析。  
 
-[query_species2000.py](query_species2000.py)是上述脚本的MySQL版本，优点是对内存要求小（毕竟用的数据库），缺点是速度慢，一个query经实验大概需要5~10s（数据库文件存储于SATA 
-SSD）。适合小批量查询（但是话又说回来了，小批量为什么不直接用API呢？Species2000最近正在升级API系统，预计2020下半年完成，等他们完成后写一个API的脚本）
+[query_species2000_colDB.py](query_species2000_colDB.py)species2000 2021年度版新推出了ColDB格式，该脚本基于该格式中的NameUsage.tsv进行矫正。**使用前需将该文件行名中的"col:"删掉**。推荐使用该脚本，速度快，几秒完成几千个查询。
 
-[api_sp2000_CN.py](api_sp2000_CN.py)可以使用中国物种名录2000的API进行查询（需注册账号），一天有2000个查询额度（实际上好像目前没有限制，估计是用的人不多）
+[api_sp2000_CN.py](api_sp2000_CN.py)可以使用中国物种名录2000的API进行查询（需注册账号），一天有2000个查询额度（实际上好像目前没有限制，估计是用的人不多）。
 
+### 其他
+1. 由于NCBI部分序列的物种名莫名其妙的不是scientific name而是common name，所以可以使用[query_common_name.py](query_common_name.py)将这部分物种名进行转换。
 
 ## 说明
 1. 科、属建议以多识为主，主要校正是否有不合法异名（目前来看基本不存在这种情况）;种名建议以species2000为主。多个数据库之间有冲突的时候需要结合实际情况判断，比如使用习惯（比如有时候国内和国外在使用广义属/狭义属上的习惯不一样,例如国际习惯用广义木兰属，但是国内可能习惯用狭义的）等等。
 2. 上述所有数据库对藻类的支持都不好，故所有脚本目前不包括藻类校正。
 3. 做药用植物校正推荐用中国物种名录2000而不用国际版species2000。原因是：1.国际版特别喜欢用广义属，中国的使用习惯很多时候倾向于狭义属，2.很多国内中药是栽培种、变种，国际版往往不承认这些是独立种，但是目前实际使用中又往往认为他们是独立种。因此使用中国物种名录2000可能更适合药用植物的情况。
 4. 非药用植物建议使用国际版species2000。原因是中国物种名录2000对非中国原产的植物支持太差了，10个里面不一定能查到2个。（大部分药用植物是中国原产的）。
+5. 对于Species2000中Status含有"ambiguous"字样的物种目前统一保留其名称（即不做"校正"）。因为根据经验和NCBI的情况看，这部份物种最后成为accepted的机率很大。
