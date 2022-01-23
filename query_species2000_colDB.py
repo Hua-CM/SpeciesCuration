@@ -57,3 +57,22 @@ class ColDBQuery:
             res_lst.append({'raw': _species,
                             'curated': self.query_species(_species)})
         return pd.DataFrame(res_lst)
+
+
+def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="This is the script for fix scientific name based on species2000")
+    parser.add_argument('-i', '--input', required=True,
+                        help='<file_path> imput path')
+    parser.add_argument('-d', '--database', required=True,
+                        help='<file_path> Species2000 taxa file')
+    parser.add_argument('-o', '--output', required=True,
+                        help='<file_path> result path')
+    args = parser.parse_args()
+    queryIns = ColDBQuery(args.database, args.input)
+    tb1 = queryIns.query()
+    tb1.to_csv(args.output, sep='\t', index=False)
+
+
+if __name__ == '__main__':
+    main()
